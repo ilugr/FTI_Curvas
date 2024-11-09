@@ -17,6 +17,11 @@ body {
     /* Animación suave para el cambio de fondo */
 }
 
+:root {
+    --button-bg-color: #363450; 
+    --button-hover-color: rgb(255, 130, 37); 
+    --button-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); 
+}
 
 /* Estilo del encabezado */
 h1 {
@@ -62,20 +67,19 @@ input[type="number"] {
 
 /* Estilo de los botones */
 button {
-    background-color: #7289da;
-    /* Color de fondo azul */
+    background-color: var(--button-bg-color);
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.1em;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: var(--button-shadow);
 }
 
 button:hover {
-    background-color: #5f73b3;
-    /* Color de fondo más oscuro */
+    background-color: var(--button-hover-color);
 }
 
 /* Contenedor de los canvases */
@@ -97,11 +101,15 @@ canvas {
 /* Estilo del botón para recargar la página */
 #btnRecargar {
     display: none;
-    background-color: #ff6f61;
+    background-color: var(--button-bg-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: var(--button-shadow);
     /* Color para el botón de recarga */
     color: white;
 }
-
+#btnRecargar:hover {
+    background-color: var(--button-hover-color);
+}
 /* Para los inputs de número */
 input[type="number"] {
     width: 80px;

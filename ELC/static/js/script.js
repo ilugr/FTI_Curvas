@@ -35,11 +35,29 @@ function iniciarDibujo() {
             const canvas = document.getElementById('canvas');
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'gray';
+
+            if (dibujo === 'curva_dragon') {
+                ctx.fillStyle = '#2c2f33';
+                let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#ff4500');
+                gradient.addColorStop(1, '#ff6347');
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 2;
+                ctx.shadowColor = 'rgba(255, 69, 0, 0.5)';
+                ctx.shadowBlur = 0;
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+            } else if (dibujo === 'curva_hilbert') {
+                ctx.fillStyle = '#e6e6fa';
+                let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#4b0082');
+                gradient.addColorStop(1, '#9370db');
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 1.5;
+                ctx.shadowColor = 'rgba(0, 0, 139, 0.5)';
+                ctx.shadowBlur = 3;
+                ctx.translate(0, 0); 
+            }
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth = 2;
-            ctx.translate(canvas.width / 2, canvas.height / 2);
 
             requestAnimationFrame(function animate() {
                 if (index < cadena.length && animating) {
@@ -55,13 +73,30 @@ function finalizarDibujo() {
     const canvasFinal = document.getElementById('canvasFinal');
     const ctxFinal = canvasFinal.getContext('2d');
     ctxFinal.clearRect(0, 0, canvasFinal.width, canvasFinal.height);
-    ctxFinal.fillStyle = 'gray';
+    
+    if (dibujo === 'curva_dragon') {
+        ctxFinal.fillStyle = '#2c2f33';
+        let gradient = ctxFinal.createLinearGradient(0, 0, canvasFinal.width, canvasFinal.height);
+        gradient.addColorStop(0, '#ff4500');
+        gradient.addColorStop(1, '#ff6347');
+        ctxFinal.strokeStyle = gradient;
+        ctxFinal.lineWidth = 2;
+        ctxFinal.shadowColor = 'rgba(255, 69, 0, 0.5)';
+        ctxFinal.shadowBlur = 0;
+        ctxFinal.translate(canvasFinal.width / 2, canvasFinal.height / 2);
+    } else if (dibujo === 'curva_hilbert') {
+        ctxFinal.fillStyle = '#e6e6fa';
+        let gradient = ctxFinal.createLinearGradient(0, 0, canvasFinal.width, canvasFinal.height);
+        gradient.addColorStop(0, '#4b0082');
+        gradient.addColorStop(1, '#9370db');
+        ctxFinal.strokeStyle = gradient;
+        ctxFinal.lineWidth = 1.5;
+        ctxFinal.shadowColor = 'rgba(0, 0, 139, 0.5)';
+        ctxFinal.shadowBlur = 3;
+        ctxFinal.translate(0, 0);
+    }
     ctxFinal.fillRect(0, 0, canvasFinal.width, canvasFinal.height);
-    ctxFinal.strokeStyle = 'white';
-    ctxFinal.lineWidth = 2;
-    ctxFinal.translate(canvasFinal.width / 2, canvasFinal.height / 2);
 
-    // Usa la variable global cadena para dibujar en el canvas final
     for (let i = 0; i < cadena.length; i++) {
         dibujarCadena(ctxFinal, cadena[i], longitud, angulo);
     }
@@ -94,6 +129,5 @@ function radians(degrees) {
 }
 
 function regresarADibujo() {
-    // Aquí puedes poner la URL de la página de dibujo
     window.location.href = "/pagina_de_dibujo";  // Cambia la URL según tu ruta en Flask
 }

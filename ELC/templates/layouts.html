@@ -13,7 +13,7 @@
     <div class="label-container">
         <button id="Inicio" onclick="regresarADibujo()">Inicio</button>
         <label for="iteraciones">Iteraciones:</label>
-        <input type="number" id="iteraciones" value="13" min="1" max="15" />
+        <input type="number" id="iteraciones" value="10" min="1" max="15" />
         <label for="longitud">Longitud:</label>
         <input type="number" id="longitud" value="4" min="1" />
         <label for="angulo">Ángulo:</label>
@@ -27,8 +27,8 @@
     </div>
 
     <div class="canvas-container">
-        <canvas id="canvas" width="700" height="700"></canvas>
-        <canvas id="canvasFinal" width="700" height="700" style="display:none;"></canvas>
+        <canvas id="canvas" width="650" height="650"></canvas>
+        <canvas id="canvasFinal" width="650" height="650" style="display:none;"></canvas>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
