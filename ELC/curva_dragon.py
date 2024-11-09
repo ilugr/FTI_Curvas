@@ -1,26 +1,36 @@
 import turtle
 import colorsys
 
+config = {
+    "velocidad": 0,
+    "background_color": "gray",
+    "pensize": 2,
+    "posicion_inicial": (-100, 0),
+    "reglas": {
+        "X": "X+YF+",
+        "Y": "-FX-Y"
+    },
+    "iteraciones": 13,
+    "tamanio_segmento": 5,
+    "angulo": 90
+}
+
 def configuracion():
-    turtle.speed(0)  # Velocidad rápida
-    turtle.bgcolor("gray")  # Color de fondo
-    turtle.pensize(2)  # Grosor de la línea
+    turtle.speed(config["velocidad"])  # Velocidad
+    turtle.bgcolor(config["background_color"])  # Color de fondo
+    turtle.pensize(config["pensize"])  # Grosor de la línea
     turtle.penup()
-    turtle.goto(-100, 0)
+    turtle.goto(config["posicion_inicial"])
     turtle.pendown()
 
-def dragon_curve(iteraciones):
+def curva_del_dragon(iteraciones):
     # Cadena inicial y reglas de producción
     cadena_inicial = "FX"
     for _ in range(iteraciones):
         dibujo = ""
         for letra in cadena_inicial:
-            if letra == "X":
-                dibujo += "X+YF+"
-            elif letra == "Y":
-                dibujo += "-FX-Y"
-            else:
-                dibujo += letra
+            # Aplica las reglas del diccionario
+            dibujo += config["reglas"].get(letra, letra)
         cadena_inicial = dibujo
     
     return cadena_inicial
@@ -29,13 +39,13 @@ def dibujar_cadena(cadena, longitud, angulo):
     # Configuración de color inicial
     colores = []
     for i in range(len(cadena)):
-        # Generar un color degradado usando HSL
-        h = i / len(cadena)  # Ajuste del color en función de la posición en la cadena
-        color = colorsys.hsv_to_rgb(h, 1, 1)  # Color en formato RGB
+        # Genera un color degradado
+        h = i / len(cadena)
+        color = colorsys.hsv_to_rgb(h, 1, 1) 
         colores.append(color)
     
     for i, simbolo in enumerate(cadena):
-        turtle.pencolor(colores[i])  # Cambiar el color de la línea
+        turtle.pencolor(colores[i])  # Cambia el color de la línea
         if simbolo == "F":
             turtle.forward(longitud)
         elif simbolo == "+":
@@ -44,17 +54,9 @@ def dibujar_cadena(cadena, longitud, angulo):
             turtle.left(angulo)
 
 def main():
-    iteraciones = 13  # Más iteraciones para mayor detalle
-    longitud = 5  # Longitud de cada segmento
-    angulo = 90
-
     configuracion()
-    # Generar la curva del dragón
-    cadena = dragon_curve(iteraciones)
-
-    # Dibujar la curva con colores degradados
-    dibujar_cadena(cadena, longitud,angulo)
-
+    cadena = curva_del_dragon(config["iteraciones"])
+    dibujar_cadena(cadena, config["tamanio_segmento"], config["angulo"])
     turtle.done()
 
 if __name__ == "__main__":

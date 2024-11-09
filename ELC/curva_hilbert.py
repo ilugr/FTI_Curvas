@@ -1,45 +1,61 @@
 import turtle
+import colorsys
+
+config = {
+    "velocidad": 0,
+    "background_color": "gray",
+    "pensize": 5,
+    "posicion_inicial": (-500, -200),
+    "color_inicial": "blue",
+    "reglas": {
+        "X": "+YF-XFX-FY+",
+        "Y": "-XF+YFY+FX-"
+    },
+    "tamanio_segmento": 7,
+    "angulo": 90,
+    "iteraciones": 8
+}
 
 def configuracion():
-    turtle.teleport(-100, 0) #Mueve la tortuga a una posicion absoluta
-    turtle.speed(0)  # Velocidad de la tortuga  [lento 1, 3, 6, 10, 0 rapido]
-    turtle.bgcolor("gray") #color de fondo
-    turtle.pensize(5) #grosor de la línea
-    turtle.color("blue")
+    turtle.speed(config["velocidad"])  # Velocidad de la tortuga
+    turtle.bgcolor(config["background_color"])  # Color de fondo
+    turtle.pensize(config["pensize"])  # Grosor de la línea
+    turtle.penup()
+    turtle.goto(config["posicion_inicial"])  # Posición inicial de la tortuga
+    turtle.pendown()
 
-# Programa principal
-def main():
-    longitud = 10  # Longitud de cada segmento
-    angulo = 90  # Ángulo de giro
-    iteraciones = 10
-    
-    configuracion()
-
+def hilbert_curve(iteraciones):
     cadena_inicial = "X"
-    
-    for i in range(iteraciones): 
+    for _ in range(iteraciones):
         dibujo = ""
         for letra in cadena_inicial:
-            if letra == "X":
-                dibujo += "+YF-XFX-FY+"
-            elif letra == "Y":
-                dibujo += "-XF+YFY+FX-"
-            else:
-                dibujo += letra
+            # Aplica las reglas usando el diccionario
+            dibujo += config["reglas"].get(letra, letra)
         cadena_inicial = dibujo
+    
+    return cadena_inicial
 
-    for simbolo in cadena_inicial:
+def dibujar_cadena(cadena, longitud, angulo):
+    # Crear lista de colores degradados
+    colores = []
+    for i in range(len(cadena)):
+        h = i / len(cadena)  # Proporción del color en el degradado
+        color = colorsys.hsv_to_rgb(h, 1, 1)  
+        colores.append(color)
+    
+    for i, simbolo in enumerate(cadena):
+        turtle.pencolor(colores[i])  # Cambia el color de la línea según el degradado
         if simbolo == "F":
             turtle.forward(longitud)
-            turtle.color("yellow")
         elif simbolo == "-":
-            turtle.color("yellow")
             turtle.right(angulo)
         elif simbolo == "+":
-            turtle.color("blue")
             turtle.left(angulo)
-            
-    print(cadena_inicial)
+
+def main():
+    configuracion()
+    cadena = hilbert_curve(config["iteraciones"])
+    dibujar_cadena(cadena, config["tamanio_segmento"], config["angulo"])
     turtle.done()
 
 if __name__ == "__main__":
