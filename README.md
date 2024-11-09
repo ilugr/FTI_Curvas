@@ -14,11 +14,11 @@
 - **Cadena Inicial:** FX
 - **Reglas de producción:** (X → X+YF+), (Y → −FX−Y)
 - **Angulo:** 90°
-&nbsp;&nbsp;&nbsp;&nbsp; - **Interpretación:**
-&nbsp;&nbsp;&nbsp;&nbsp; - F: Dibujar Segmento
-&nbsp;&nbsp;&nbsp;&nbsp; - +: Girar a la Derecha
-&nbsp;&nbsp;&nbsp;&nbsp; - -: Girar a la Izquierda
-&nbsp;&nbsp;&nbsp;&nbsp; - X, Y: No se hace nada.
+- **Interpretación:**
+&nbsp;&nbsp;&nbsp;&nbsp;F: Dibujar Segmento
+&nbsp;&nbsp;&nbsp;&nbsp;+: Girar a la Derecha
+&nbsp;&nbsp;&nbsp;&nbsp;-: Girar a la Izquierda
+&nbsp;&nbsp;&nbsp;&nbsp;X, Y: No se hace nada.
 
 ### Curva de Hilbert
 - **No terminales:** X, Y
@@ -27,10 +27,10 @@
 - **Reglas de producción:** (X→+ YF - XFX - FY +), (Y →- XF + YFY + FX -)
 - **Angulo:** 90°
 - **Interpretación:**
-&nbsp;&nbsp;&nbsp;&nbsp; - F: Dibujar Segmento
-&nbsp;&nbsp;&nbsp;&nbsp; - +: Girar a la Izquierda
-&nbsp;&nbsp;&nbsp;&nbsp; - -: Girar a la Derecha
-&nbsp;&nbsp;&nbsp;&nbsp; - X, Y: No se hace nada.
+&nbsp;&nbsp;&nbsp;&nbsp;F: Dibujar Segmento
+&nbsp;&nbsp;&nbsp;&nbsp;+: Girar a la Izquierda
+&nbsp;&nbsp;&nbsp;&nbsp;-: Girar a la Derecha
+&nbsp;&nbsp;&nbsp;&nbsp;X, Y: No se hace nada.
 
 ---
 
