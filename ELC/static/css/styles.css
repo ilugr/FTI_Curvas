@@ -1,0 +1,132 @@
+/* Estilos generales para el cuerpo */
+body {
+    background-color: #2c2f33;
+    /* Color de fondo gris oscuro como base */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background-image 0.5s ease-in-out;
+    /* Animación suave para el cambio de fondo */
+}
+
+
+/* Estilo del encabezado */
+h1 {
+    font-size: 2em;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+/* Contenedor de los labels */
+.label-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los formularios de entrada */
+label {
+    font-size: 1.2em;
+    margin: 10px 20px;
+    /* Espacio entre labels */
+}
+
+/* Estilo de los inputs */
+input[type="number"] {
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    background-color: #3a3f44;
+    color: white;
+}
+
+/* Contenedor de los botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* Espacio entre los botones */
+    margin-top: 20px;
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #7289da;
+    /* Color de fondo azul */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5f73b3;
+    /* Color de fondo más oscuro */
+}
+
+/* Contenedor de los canvases */
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 80%;
+    /* Ajustar el tamaño de los canvases */
+}
+
+/* Estilo de los canvases */
+canvas {
+    border: 2px solid white;
+    margin: 0 20px;
+    /* Espaciado entre los canvases */
+}
+
+/* Estilo del botón para recargar la página */
+#btnRecargar {
+    display: none;
+    background-color: #ff6f61;
+    /* Color para el botón de recarga */
+    color: white;
+}
+
+/* Para los inputs de número */
+input[type="number"] {
+    width: 80px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .canvas-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    canvas {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adaptación para labels y botones en pantallas pequeñas */
+    .label-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

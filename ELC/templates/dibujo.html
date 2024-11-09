@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dibujo.css') }}">
+    <title>Seleccionar Curva</title>
+</head>
+
+<body>
+    <div class="card">
+        <!-- Agregamos el enlace que envuelve la imagen -->
+        <a href="/layout?dibujo=curva_dragon" class="image-link">
+            <div class="image-box">
+                <img src="{{ url_for('static', filename='imagenes/dragon.jpg') }}" alt="Curva Dragon">
+            </div>
+        </a>
+        <div class="content">
+            <h2>Curva Dragon</h2>
+            <p> La curva de dragón es un fractal que se genera mediante un proceso iterativo. Comienza con una línea
+                recta que, a lo largo de sucesivas transformaciones,
+                se va doblando en ángulos de 90 grados. A medida que se realizan más iteraciones, la curva adquiere una
+                forma compleja.</p>
+            <p>En su forma final, la curva presenta un patrón que recuerda a las alas de un dragón, lo que da lugar a
+                su nombre.</p>
+            <p>Este fractal es interesante tanto desde un punto de vista matemático como visual, y se utiliza
+                en estudios de geometría fractal y sistemas dinámicos. Además, se ha aplicado en áreas como el arte
+                digital y el diseño, donde su estructura repetitiva y su belleza geométrica son apreciadas.</p>
+        </div>
+    </div>
+    <div class="card">
+        <!-- Agregamos el enlace que envuelve la imagen -->
+        <a href="/layout?dibujo=curva_hilbert" class="image-link">
+            <div class="image-box">
+                <img src="{{ url_for('static', filename='imagenes/hilbert.jpg') }}" alt="Curva Dragon">
+            </div>
+        </a>
+        <div class="content">
+            <h2>Curva de Hilbert</h2>
+            <p>La curva de Hilbert es un fractal generado de manera iterativa, comenzando con un patrón simple de cuatro
+                segmentos en forma de "L". En cada iteración, los segmentos se subdividen y reconfiguran, creando una
+                estructura continua que llena completamente el espacio.</p>
+            <p>La curva de Hilbert tiene aplicaciones en análisis de sistemas dinámicos, optimización en computación,
+                visualización de datos, teoría de grafos, transmisión de datos y compresión de imágenes, debido a su
+                capacidad de llenar el espacio de manera continua y sus propiedades matemáticas.</p>
+        </div>
+    </div>
+</body>
+
+</html>

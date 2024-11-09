@@ -1,0 +1,95 @@
+body {
+    background-color: #2c2f33;
+    /* Color gris oscuro */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    /* Coloca los elementos en una fila */
+    align-items: stretch;
+    /* Hace que los elementos se estiren para ocupar el espacio disponible */
+    justify-content: flex-start;
+    height: 100vh;
+    /* Hace que el body ocupe toda la altura de la ventana */
+    box-sizing: border-box;
+}
+
+.card {
+    flex: 1;
+    /* Hace que cada tarjeta ocupe la mitad del ancho */
+    height: 100vh;
+    /* Hace que cada tarjeta ocupe toda la altura de la pantalla */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* Asegura que las tarjetas estén en columna */
+}
+
+.card .image-box {
+    flex-grow: 1;
+    /* Hace que la imagen ocupe todo el espacio disponible verticalmente */
+    width: 100%;
+    /* Asegura que la imagen ocupe todo el ancho */
+    height: 100%;
+    /* Asegura que la imagen ocupe todo el alto disponible */
+    overflow: hidden;
+}
+
+.card .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Asegura que la imagen cubra todo el espacio disponible */
+    transition: 0.5s ease-in-out;
+    z-index: 0;
+}
+
+.image-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    z-index: 1;
+}
+
+.card .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    z-index: 2;
+}
+
+.card:hover img {
+    filter: grayscale(1) brightness(0.4);
+}
+
+.card:hover .content {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        /* En pantallas pequeñas, las tarjetas se apilan verticalmente */
+    }
+
+    .card {
+        width: 100%;
+        max-width: none;
+        height: 400px;
+        /* Ajustar el tamaño de las tarjetas en pantallas pequeñas */
+    }
+}

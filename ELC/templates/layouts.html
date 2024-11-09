@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+    <title>Dibujar Curva</title>
+</head>
+
+<body>
+    <div id="config" data-dibujo="{{ dibujo }}"></div>
+    <div class="label-container">
+        <button id="Inicio" onclick="regresarADibujo()">Inicio</button>
+        <label for="iteraciones">Iteraciones:</label>
+        <input type="number" id="iteraciones" value="13" min="1" max="15" />
+        <label for="longitud">Longitud:</label>
+        <input type="number" id="longitud" value="4" min="1" />
+        <label for="angulo">Ángulo:</label>
+        <input type="number" id="angulo" value="90" min="1" />
+    </div>
+
+    <div class="button-container">
+        <button id="btnDibujar" onclick="iniciarDibujo()">Dibujar</button>
+        <button id="btnFinalizar" onclick="finalizarDibujo()" disabled>Dibujo Completo</button>
+        <button id="btnRecargar" onclick="recargarPagina()" style="display: none;">Actualizar Página</button>
+    </div>
+
+    <div class="canvas-container">
+        <canvas id="canvas" width="700" height="700"></canvas>
+        <canvas id="canvasFinal" width="700" height="700" style="display:none;"></canvas>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
