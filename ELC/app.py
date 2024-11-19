@@ -24,7 +24,9 @@ def generar_dragon_curve(dibujo, iteraciones):
     reglas = REGLAS[dibujo]["reglas"]
     
     for _ in range(iteraciones):
-        dibujo = "".join(reglas.get(letra, letra) for letra in cadena_inicial)
+        dibujo = ""
+        for letra in cadena_inicial:
+            dibujo += reglas.get(letra,letra)
         cadena_inicial = dibujo
     return cadena_inicial
 
